@@ -369,29 +369,6 @@ npm run dev
 
 ---
 
-## 🎯 Live Demo
-
-**Frontend:** https://queuepulse-frontend.onrender.com  
-**Backend:** https://queuepulse-backend-z25a.onrender.com
-
-*(Free tier: 30s cold start after 15 min inactivity)*
-
----
-
-## 📝 Summary
-
-### Evaluation Criteria
-
-✅ **Clear Problem Framing:** Documented 76% paper-based clinics, user pain points for patients/receptionists/doctors
-
-✅ **Measurable Metrics:** 
-- 6.8s patient add (32% under target)
-- 87ms update latency (57% under target)
-- 12.4% wait time prediction error
-
-✅ **Edge Cases:** 8 scenarios documented with test results (7 fully handled, 1 partial)
-
----
 
 ## 🔗 Links
 
