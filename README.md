@@ -2,7 +2,7 @@
 
 **Real-Time Digital Queue Management for Indian Clinics**
 
-> *"The receptionist clicks 'Call Next' and the waiting room TV updates instantly — no refresh, no lag. That's when the clinic owner says: 'I want this.'"*
+> *"The doctor clicks 'Call Next' and the waiting room TV updates instantly — no refresh, no lag. That's when the clinic owner says: 'I want this.'"*
 
 ---
 
