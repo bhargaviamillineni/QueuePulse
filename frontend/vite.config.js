@@ -6,6 +6,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    base: '/',
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      sourcemap: false
+    },
     server: {
       host: env.VITE_HOST,
       port: Number(env.VITE_PORT)
