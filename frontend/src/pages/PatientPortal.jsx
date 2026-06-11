@@ -42,7 +42,6 @@ export default function PatientPortal() {
     return () => { mounted = false; socket.disconnect(); };
   }, []);
 
-  // Live timer showing how long the current patient has been in
   const elapsed = useElapsedTime(queue?.consultationStartedAt);
 
   function handleCheck(e) {
@@ -93,7 +92,6 @@ export default function PatientPortal() {
                   PRIORITY
                 </span>
               )}
-              {/* Live consultation timer — real data from calledAt timestamp */}
               {elapsed && (
                 <div className="mt-3 inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -113,18 +111,20 @@ export default function PatientPortal() {
         {/* Token check */}
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
           <p className="text-sm font-semibold text-slate-700 mb-3">Check your position</p>
-          <form onSubmit={handleCheck} className="flex gap-2">
+
+          {/* ✅ Full-width form — input grows, button fixed width */}
+          <form onSubmit={handleCheck} className="flex items-center gap-2 w-full">
             <input
               type="number"
               min="1"
               value={token}
               onChange={e => { setToken(e.target.value); setSearched(false); setInputError(''); }}
               placeholder="Token number"
-              className="flex-1 rounded-xl border border-slate-300 px-3 py-3 text-xl font-bold text-center focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="flex-1 min-w-0 rounded-xl border border-slate-300 px-3 py-2.5 text-base font-bold text-center focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
             <button
               type="submit"
-              className="rounded-xl bg-teal-600 px-5 py-3 font-semibold text-white hover:bg-teal-700 active:scale-[0.97] transition-all"
+              className="w-24 shrink-0 rounded-xl bg-teal-600 py-2.5 font-semibold text-white hover:bg-teal-700 active:scale-[0.97] transition-all"
             >
               Check
             </button>
@@ -145,10 +145,9 @@ export default function PatientPortal() {
           {/* In queue with real wait estimate */}
           {inQueue && !isCurrent && (
             <div className="mt-4 rounded-xl bg-blue-50 border border-blue-200 p-4 space-y-2.5">
-              <Row label="Your token" value={<span className="text-2xl font-bold">{inQueue.tokenNumber}</span>} />
+              <Row label="Your token"   value={<span className="text-2xl font-bold">{inQueue.tokenNumber}</span>} />
               <Row label="People ahead" value={<span className="text-2xl font-bold">{inQueue.patientsAhead}</span>} />
 
-              {/* Real estimated wait — only shown when we have real session data */}
               {sampleSize > 0 && inQueue.estimatedWaitMinutes > 0 && (
                 <div className="pt-2 border-t border-blue-200">
                   <Row
